@@ -31,7 +31,12 @@ impl Identify {
             let pem = std::fs::read_to_string(path)?;
             Identify::from_pem(&pem)
         } else {
+            if let Some(parent) = path.parent() {
+                fs::create_dir_all(parent)?;
+            }
+
             let identify = Identify::generate();
+
             fs::write(
                 path,
                 identify

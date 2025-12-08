@@ -14,6 +14,8 @@ pub enum Error {
     #[error(transparent)]
     Ed25519(#[from] ed25519_dalek::SignatureError),
 
+    #[error(transparent)]
+    MDns(#[from] mdns_sd::Error),
 
     #[error(transparent)]
     Other(#[from] anyhow::Error),

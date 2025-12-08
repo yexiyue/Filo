@@ -28,28 +28,3 @@ impl From<VerifyingKey> for DeviceId {
         Self(id_b32)
     }
 }
-
-#[cfg(test)]
-mod test {
-
-    use crate::identify::Identify;
-
-    use super::*;
-
-    #[test]
-    fn test_device_id() {
-        let identify = Identify::from_pem(
-            "-----BEGIN PRIVATE KEY-----
-MFECAQEwBQYDK2VwBCIEIBAa0Ut5N/mC6ssT7J7z156s3oXCMRet63BMC+dIbeXg
-gSEATLA6Bz/CL2XjgRMXT4GyIGHJ4nbQMaP6hi1LAq0pUkw=
------END PRIVATE KEY-----",
-        )
-        .unwrap();
-        let device_id = DeviceId::from(identify.signing_key.verifying_key());
-        println!(
-            "device id: {device_id:?}---{} \n {}",
-            device_id.0.len(),
-            device_id.label()
-        );
-    }
-}
