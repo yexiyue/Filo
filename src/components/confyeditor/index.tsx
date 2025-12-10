@@ -8,6 +8,7 @@ import { CodeBlockKit } from "../editor/plugins/code-block-kit";
 import { BasicMarksKit } from "../editor/plugins/basic-marks-kit";
 import { CalloutKit } from "../editor/plugins/callout-kit";
 import { SlashKit } from "../editor/plugins/slash-kit";
+import { FloatingToolbarKit } from "../editor/plugins/floating-toolbar-kit";
 
 export function ComfyEditor() {
   const editor = usePlateEditor({
@@ -19,6 +20,7 @@ export function ComfyEditor() {
       ...BasicMarksKit,
       ...CalloutKit,
       ...SlashKit,
+      ...FloatingToolbarKit,
     ],
   }); // Initializes the editor instance
 
