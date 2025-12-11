@@ -1,5 +1,4 @@
 import { Plate, usePlateEditor } from "platejs/react";
-
 import { Editor, EditorContainer } from "@/components/ui/editor";
 import { BasicBlocksKit } from "../editor/plugins/basic-blocks-kit";
 import { MarkdownKit } from "../editor/plugins/markdown-kit";
@@ -9,7 +8,16 @@ import { BasicMarksKit } from "../editor/plugins/basic-marks-kit";
 import { CalloutKit } from "../editor/plugins/callout-kit";
 import { SlashKit } from "../editor/plugins/slash-kit";
 import { FloatingToolbarKit } from "../editor/plugins/floating-toolbar-kit";
-
+import { DateKit } from "../editor/plugins/date-kit";
+import { MathKit } from "../editor/plugins/math-kit";
+import { LinkKit } from "../editor/plugins/link-kit";
+import { ListKit } from "../editor/plugins/list-kit";
+import { ToggleKit } from "../editor/plugins/toggle-kit";
+import { BlockPlaceholderKit } from "../editor/plugins/block-placeholder-kit";
+import { BlockSelectionKit } from "../editor/plugins/block-selection-kit";
+import { EmojiKit } from "../editor/plugins/emoji-kit";
+import { MentionKit } from "../editor/plugins/mention-kit";
+import { MediaKit } from "../editor/plugins/media-kit";
 export function ComfyEditor() {
   const editor = usePlateEditor({
     plugins: [
@@ -21,6 +29,16 @@ export function ComfyEditor() {
       ...CalloutKit,
       ...SlashKit,
       ...FloatingToolbarKit,
+      ...DateKit,
+      ...MathKit,
+      ...LinkKit,
+      ...ListKit,
+      ...ToggleKit,
+      ...BlockPlaceholderKit,
+      ...BlockSelectionKit,
+      ...EmojiKit,
+      ...MentionKit,
+      ...MediaKit,
     ],
   }); // Initializes the editor instance
 
