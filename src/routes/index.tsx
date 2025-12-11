@@ -1,4 +1,4 @@
-import { ComfyEditor } from "@/components/confyeditor";
+import { ComfyEditor } from "@/components/confy-editor";
 import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/")({

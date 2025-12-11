@@ -3,7 +3,8 @@ import react from "@vitejs/plugin-react";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import path from "path";
-// @ts-expect-error process is a nodejs global
+import { lingui } from "@lingui/vite-plugin";
+
 const host = process.env.TAURI_DEV_HOST;
 
 // https://vite.dev/config/
@@ -14,7 +15,12 @@ export default defineConfig(async () => ({
       target: "react",
       autoCodeSplitting: true,
     }),
-    react(),
+    react({
+      babel: {
+        plugins: ["@lingui/babel-plugin-lingui-macro"],
+      },
+    }),
+    lingui(),
   ],
   resolve: {
     alias: {
