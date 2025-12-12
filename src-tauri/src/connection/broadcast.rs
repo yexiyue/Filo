@@ -40,7 +40,7 @@ pub fn broadcast(device: &DeviceId) -> Result<ServiceDaemon> {
     let service_info = ServiceInfo::new(
         "_filo._tcp.local.",
         &device.label(),
-        &format!("{}._filo._tcp.local.", device.label()),
+        &format!("{}.local.", device.label()),
         "",
         43210,
         value,
