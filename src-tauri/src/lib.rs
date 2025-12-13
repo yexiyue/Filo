@@ -1,9 +1,7 @@
-pub mod device;
 pub mod error;
-pub mod identify;
 pub use error::*;
 pub mod commands;
-pub mod connection;
+pub mod p2p;
 pub mod utils;
 
 #[cfg_attr(mobile, tauri::mobile_entry_point)]
@@ -13,8 +11,7 @@ pub fn run() {
         .plugin(tauri_plugin_os::init())
         .plugin(tauri_plugin_opener::init())
         .invoke_handler(tauri::generate_handler![
-            commands::register,
-            commands::discover
+            commands::p2p::start,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

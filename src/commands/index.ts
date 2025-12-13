@@ -10,7 +10,7 @@ export interface DeviceInfo {
  * 注册设备
  * 对应Rust中的register command
  */
-export async function register(): Promise<void> {
+export async function register(): Promise<string> {
   return await invoke('register');
 }
 
