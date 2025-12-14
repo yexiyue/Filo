@@ -12,6 +12,9 @@ pub enum Error {
     Tauri(#[from] tauri::Error),
 
     #[error(transparent)]
+    Identify(#[from] libp2p::identity::DecodingError),
+
+    #[error(transparent)]
     Other(#[from] anyhow::Error),
 }
 

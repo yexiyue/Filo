@@ -10,11 +10,7 @@ import {
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import {
-  register as registerDevice,
-  discover as discoverDevices,
-  type DeviceInfo,
-} from "@/commands";
+import { register as registerDevice, type DeviceInfo } from "@/commands";
 
 export const Route = createFileRoute("/devices")({
   component: Devices,
@@ -44,15 +40,15 @@ function Devices() {
       setIsDiscovering(true);
       setDevices([]);
 
-      await discoverDevices((deviceInfo: DeviceInfo) => {
-        setDevices((prev) => {
-          // 避免重复添加相同设备
-          if (prev.some((d) => d.device_id === deviceInfo.device_id)) {
-            return prev;
-          }
-          return [...prev, deviceInfo];
-        });
-      });
+      // await discoverDevices((deviceInfo: DeviceInfo) => {
+      //   setDevices((prev) => {
+      //     // 避免重复添加相同设备
+      //     if (prev.some((d) => d.device_id === deviceInfo.device_id)) {
+      //       return prev;
+      //     }
+      //     return [...prev, deviceInfo];
+      //   });
+      // });
     } catch (err) {
       console.error("发现设备失败:", err);
       setError("发现设备失败: " + (err as Error).message);
@@ -76,9 +72,7 @@ function Devices() {
         </p>
         <p>
           你的设备公钥：{" "}
-          <span className="text-xs text-secondary-foreground">
-            {publickey}
-          </span>
+          <span className="text-xs text-secondary-foreground">{publickey}</span>
         </p>
       </div>
 

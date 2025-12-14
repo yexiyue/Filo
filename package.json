@@ -61,6 +61,7 @@
     "@tauri-apps/api": "^2",
     "@tauri-apps/plugin-opener": "^2",
     "@tauri-apps/plugin-os": "~2.3.2",
+    "@tauri-apps/plugin-stronghold": "~2.3.1",
     "@udecode/cn": "^52.0.1",
     "@uploadthing/react": "7.3.3",
     "class-variance-authority": "^0.7.1",
@@ -86,7 +87,8 @@
     "tailwindcss": "^4.1.17",
     "uploadthing": "7.7.4",
     "use-file-picker": "2.1.2",
-    "zod": "^4.1.13"
+    "zod": "^4.1.13",
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@lingui/babel-plugin-lingui-macro": "^5.6.1",

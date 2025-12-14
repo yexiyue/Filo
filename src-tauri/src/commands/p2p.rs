@@ -1,8 +1,11 @@
 use base32::Alphabet;
-use libp2p::{futures::StreamExt, identity::Keypair};
+use libp2p::{futures::StreamExt, identity::Keypair, mdns, swarm::SwarmEvent};
 use tracing::info;
 
-use crate::{p2p::FiloSwarm, Result};
+use crate::{
+    network::{FiloBehaviourEvent, FiloSwarm},
+    Result,
+};
 
 #[tauri::command]
 pub async fn start() -> Result<String> {
@@ -18,7 +21,41 @@ pub async fn start() -> Result<String> {
 
         loop {
             let event = filo_swarm.swarm.select_next_some().await;
-            info!("event: {:?}", event)
+            // info!("event: {:?}", event);
+
+            match event {
+                SwarmEvent::NewExternalAddrOfPeer { peer_id, address } => {
+                    info!("NewExternalAddrOfPeer: {:?}", address);
+                }
+                SwarmEvent::Behaviour(behaviour) => match behaviour {
+                    FiloBehaviourEvent::Mdns(e) => {
+                        info!("Mdns: {:#?}", e);
+                        match e {
+                            mdns::Event::Discovered(list) => {
+                                for (peer_id, multiaddr) in list {
+                                    info!("Discovered: {:?}", multiaddr);
+                                    // filo_swarm
+                                    //     .swarm
+                                    //     .behaviour_mut()
+                                    //     .gossipsub
+                                    //     .add_explicit_peer(&peer_id);
+                                    filo_swarm.swarm.dial(multiaddr)?;
+
+                                    info!("Dial: {:?}", peer_id);
+                                }
+                            }
+                            mdns::Event::Expired(list) => {}
+                        }
+                    }
+                    FiloBehaviourEvent::Identify(e) => {
+                        info!("Identify: {:#?}", e);
+                    }
+                    FiloBehaviourEvent::Gossipsub(e) => {
+                        info!("Gossipsub: {:#?}", e);
+                    }
+                },
+                _ => {}
+            }
         }
     });
 

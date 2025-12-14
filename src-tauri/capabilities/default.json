@@ -8,6 +8,8 @@
   "permissions": [
     "core:default",
     "opener:default",
-    "os:default"
+    "os:default",
+    "stronghold:default",
+    "stronghold:allow-remove-store-record"
   ]
 }
