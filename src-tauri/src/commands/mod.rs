@@ -1,4 +1,4 @@
-pub mod p2p;
-pub use p2p::*;
+pub mod network;
+pub use network::*;
 pub mod identity;
 pub use identity::*;

@@ -914,16 +914,16 @@ export class FiloProvider {
 
 ### 9.1 事件分类
 
-| 类别 | 事件 | 触发时机 |
-|------|------|----------|
-| **行为事件** | `Behaviour` | 子协议产生事件 |
-| **连接事件** | `ConnectionEstablished` | 新连接建立成功 |
-| | `ConnectionClosed` | 连接关闭 |
-| | `IncomingConnection` | 收到入站连接请求 |
-| | `OutgoingConnectionError` | 出站连接失败 |
-| **监听事件** | `NewListenAddr` | 开始监听新地址 |
-| | `ListenerError` | 监听器错误 |
-| **拨号事件** | `Dialing` | 开始拨号连接 |
+| 类别       | 事件                        | 触发时机     |
+| -------- | ------------------------- | -------- |
+| **行为事件** | `Behaviour`               | 子协议产生事件  |
+| **连接事件** | `ConnectionEstablished`   | 新连接建立成功  |
+|          | `ConnectionClosed`        | 连接关闭     |
+|          | `IncomingConnection`      | 收到入站连接请求 |
+|          | `OutgoingConnectionError` | 出站连接失败   |
+| **监听事件** | `NewListenAddr`           | 开始监听新地址  |
+|          | `ListenerError`           | 监听器错误    |
+| **拨号事件** | `Dialing`                 | 开始拨号连接   |
 
 ### 9.2 mDNS 事件
 

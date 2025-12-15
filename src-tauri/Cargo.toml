@@ -40,9 +40,11 @@ libp2p = { version = "0.56.0", features = [
     "quic",
     "identify",
     "ed25519",
+    "serde",
 ] }
 tauri-plugin-stronghold = "2"
 blake3 = { version = "1.8.2", features = ["zeroize"] }
+async-trait = "0.1.89"
 
 [profile.dev.package.scrypt]
 opt-level = 3

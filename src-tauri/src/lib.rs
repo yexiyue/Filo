@@ -20,7 +20,10 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![
             commands::generate_keypair,
             commands::register_keypair,
-            commands::p2p::start,
+
+            commands::network::start,
+            commands::network::dial,
+            commands::network::close,
         ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");

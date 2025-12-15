@@ -24,6 +24,9 @@ export const useSecretStore = create(
           const keypair = await generateKeypair();
           const deviceId = await registerKeypair(keypair);
           set({ keypair, deviceId });
+        } else {
+          const deviceId = await registerKeypair(keypair);
+          set({ deviceId });
         }
       },
     }),

@@ -15,6 +15,9 @@ pub enum Error {
     Identify(#[from] libp2p::identity::DecodingError),
 
     #[error(transparent)]
+    Receive(#[from] tokio::sync::oneshot::error::RecvError),
+
+    #[error(transparent)]
     Other(#[from] anyhow::Error),
 }
 
